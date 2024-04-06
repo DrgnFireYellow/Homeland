@@ -1,0 +1,10 @@
+name: Homeland
+version: 1.0.0
+main: main.java.com.drgnfireyellow.homeland.homeland
+description: An attempt at recreating Hypixel housing.
+author: DrgnFireYellow
+website: https://github.com/DrgnFireYellow
+api-version: '1.20'
+commands:
+  'house':
+    description: 'Teleport to your house.'
