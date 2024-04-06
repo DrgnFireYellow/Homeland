@@ -11,11 +11,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import main.java.com.drgnfireyellow.homeland.commands.house;
+import main.java.com.drgnfireyellow.homeland.commands.visit;
 
 public class homeland extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         this.getCommand("house").setExecutor(new house());
+        this.getCommand("visit").setExecutor(new visit());
         Bukkit.getPluginManager().registerEvents(this, this);
     }
 

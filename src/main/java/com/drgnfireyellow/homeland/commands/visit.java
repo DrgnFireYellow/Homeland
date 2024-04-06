@@ -9,15 +9,16 @@ import org.bukkit.World;
 import org.bukkit.Location;
 import org.bukkit.GameMode;
 
-public class house implements CommandExecutor {
+
+public class visit implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
-            sender.sendMessage("Teleporting to your house...");
-            World destinationWorld = Bukkit.getWorld(((Player) sender).getUniqueId().toString());
+            sender.sendMessage("Teleporting to "  + args[0] + "'s house...");
+            World destinationWorld = Bukkit.getWorld(Bukkit.getOfflinePlayerIfCached(args[0]).toString());
             Location destination = new Location(destinationWorld, 0, -60, 0);
             ((Player) sender).teleport(destination);
-            ((Player) sender).setGameMode(GameMode.CREATIVE);
+            ((Player) sender).setGameMode(GameMode.ADVENTURE);
         }
         return false;
     }
