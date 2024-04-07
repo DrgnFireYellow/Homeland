@@ -10,3 +10,5 @@ commands:
     description: 'Teleport to your house.'
   'visit':
     description: "Teleport to another player's house."
+  'housesetting':
+    description: 'Change your house settings.'
