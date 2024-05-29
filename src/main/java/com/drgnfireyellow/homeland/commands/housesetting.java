@@ -11,7 +11,7 @@ public class housesetting implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
-            World userWorld = Bukkit.getWorld(((Player) sender).getUniqueId().toString());
+            World userWorld = Bukkit.getWorld("homeland_" + ((Player) sender).getUniqueId().toString());
             System.out.println(args[0]);
             System.out.println(args[1]);
             if (args[0].equals("time")) {

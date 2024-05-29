@@ -15,7 +15,7 @@ public class visit implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             sender.sendMessage("Teleporting to "  + args[0] + "'s house...");
-            World destinationWorld = Bukkit.getWorld(Bukkit.getOfflinePlayerIfCached(args[0]).toString());
+            World destinationWorld = Bukkit.getWorld("homeland_" + Bukkit.getOfflinePlayerIfCached(args[0]).getUniqueId().toString());
             Location destination = new Location(destinationWorld, 0, -60, 0);
             ((Player) sender).teleport(destination);
             ((Player) sender).setGameMode(GameMode.ADVENTURE);

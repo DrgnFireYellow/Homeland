@@ -14,7 +14,7 @@ public class house implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             sender.sendMessage("Teleporting to your house...");
-            World destinationWorld = Bukkit.getWorld(((Player) sender).getUniqueId().toString());
+            World destinationWorld = Bukkit.getWorld("homeland_" + ((Player) sender).getUniqueId().toString());
             Location destination = new Location(destinationWorld, 0, -60, 0);
             ((Player) sender).teleport(destination);
             ((Player) sender).setGameMode(GameMode.CREATIVE);
