@@ -12,3 +12,5 @@ commands:
     description: "Teleport to another player's house."
   'housesetting':
     description: 'Change your house settings.'
+  'housetoolbox':
+    description: 'Shows a menu to obtain the custom items you can use in your house.'
