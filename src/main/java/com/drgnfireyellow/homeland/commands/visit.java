@@ -19,6 +19,7 @@ public class visit implements CommandExecutor {
             Location destination = new Location(destinationWorld, 0, -60, 0);
             ((Player) sender).teleport(destination);
             ((Player) sender).setGameMode(GameMode.ADVENTURE);
+            ((Player) sender).getInventory().clear();
         }
         return false;
     }
