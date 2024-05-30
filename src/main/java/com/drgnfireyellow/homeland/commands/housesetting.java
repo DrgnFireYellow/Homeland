@@ -1,13 +1,16 @@
 package main.java.com.drgnfireyellow.homeland.commands;
 
+import java.util.ArrayList;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-public class housesetting implements CommandExecutor {
+public class housesetting implements CommandExecutor,TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
@@ -40,5 +43,22 @@ public class housesetting implements CommandExecutor {
             }
         }
         return false;
+    }
+    @Override
+    public ArrayList<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        ArrayList<String> output = new ArrayList<String>();
+        if (args.length == 1) {
+            output.add("time");
+        }
+        if (args.length == 2) {
+            if (args[0].equals("time")) {
+                output.add("sunrise");
+                output.add("day");
+                output.add("noon");
+                output.add("night");
+                output.add("midnight");
+            }
+        }
+        return output;
     }
 }
