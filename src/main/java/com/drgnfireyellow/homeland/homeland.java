@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -96,6 +97,15 @@ public class homeland extends JavaPlugin implements Listener {
                         e.remove();
                     }
                 }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerArmorStandManipulate(PlayerArmorStandManipulateEvent event) {
+        if (!event.getRightClicked().isVisible()) {
+            if (event.getPlayer().getWorld().getName().startsWith("homeland_")) {
+                event.setCancelled(true);
             }
         }
     }
