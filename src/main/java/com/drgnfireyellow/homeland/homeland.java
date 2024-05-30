@@ -69,7 +69,7 @@ public class homeland extends JavaPlugin implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Material heldItemMaterial = player.getInventory().getItemInMainHand().getType();
-        if (player.getWorld().getName().startsWith("homeland_")) {
+        if (player.getWorld().getName().equals("homeland_" + player.getUniqueId().toString())) {
             if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
                 if (heldItemMaterial.equals(Material.NAME_TAG)) {
                     Location blockLocation = event.getClickedBlock().getRelative(event.getBlockFace()).getLocation();
