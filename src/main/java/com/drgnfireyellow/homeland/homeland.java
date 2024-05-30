@@ -6,6 +6,7 @@ import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 import org.bukkit.WorldBorder;
 import org.bukkit.Difficulty;
+import org.bukkit.GameRule;
 import org.bukkit.Material;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
@@ -41,7 +42,7 @@ public class homeland extends JavaPlugin implements Listener {
             userWorld.setDifficulty(Difficulty.PEACEFUL);
             WorldBorder userWorldBorder = userWorld.getWorldBorder();
             userWorldBorder.setSize(100);
-            userWorld.setGameRuleValue("doDaylightCycle", "false");
+            userWorld.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
         }
     }
 
