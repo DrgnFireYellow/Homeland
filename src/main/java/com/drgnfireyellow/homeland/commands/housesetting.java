@@ -3,6 +3,7 @@ package main.java.com.drgnfireyellow.homeland.commands;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -37,9 +38,23 @@ public class housesetting implements CommandExecutor,TabCompleter {
                     userWorld.setTime(Integer.valueOf(args[1]));
                 }
             }
+            else if (args[0].equals("mobspawning")) {
+                if (args[1].equals("true")) {
+                    userWorld.setGameRule(GameRule.DO_MOB_SPAWNING, true);
+                }
+                else if (args[1].equals("false")) {
+                    userWorld.setGameRule(GameRule.DO_MOB_SPAWNING, false);
+                }
+                else {
+                    sender.sendMessage("Valid Options:");
+                    sender.sendMessage("true");
+                    sender.sendMessage("false");
+                }
+            }
             else {
                 sender.sendMessage("Valid Settings:");
                 sender.sendMessage("time");
+                sender.sendMessage("mobspawning");
             }
         }
         return false;
@@ -49,6 +64,7 @@ public class housesetting implements CommandExecutor,TabCompleter {
         ArrayList<String> output = new ArrayList<String>();
         if (args.length == 1) {
             output.add("time");
+            output.add("mobspawning");
         }
         if (args.length == 2) {
             if (args[0].equals("time")) {
@@ -57,6 +73,10 @@ public class housesetting implements CommandExecutor,TabCompleter {
                 output.add("noon");
                 output.add("night");
                 output.add("midnight");
+            }
+            else if (args[0].equals("mobspawning")) {
+                output.add("true");
+                output.add("false");
             }
         }
         return output;
