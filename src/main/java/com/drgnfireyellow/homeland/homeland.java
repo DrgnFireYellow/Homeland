@@ -83,6 +83,9 @@ public class homeland extends JavaPlugin implements Listener {
                     hologramArmorStand.setCustomNameVisible(true);
                     hologramArmorStand.setVisible(false);
                 }
+                if (event.getClickedBlock().getType().equals(Material.LAVA_CAULDRON)) {
+                    player.getInventory().clear(player.getInventory().getHeldItemSlot());
+                }
             }
         }
     }
