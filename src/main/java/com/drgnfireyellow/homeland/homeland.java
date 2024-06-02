@@ -27,6 +27,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.util.Vector;
 import main.java.com.drgnfireyellow.homeland.commands.house;
+import main.java.com.drgnfireyellow.homeland.commands.housemenu;
 import main.java.com.drgnfireyellow.homeland.commands.visit;
 import net.kyori.adventure.text.Component;
 import main.java.com.drgnfireyellow.homeland.commands.housesetting;
@@ -40,6 +41,7 @@ public class homeland extends JavaPlugin implements Listener {
         this.getCommand("housesetting").setExecutor(new housesetting());
         this.getCommand("housesetting").setTabCompleter(new housesetting());
         this.getCommand("housetoolbox").setExecutor(new housetoolbox());
+        this.getCommand("housemenu").setExecutor(new housemenu());
         Bukkit.getPluginManager().registerEvents(this, this);
     }
 

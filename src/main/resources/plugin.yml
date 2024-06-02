@@ -14,3 +14,5 @@ commands:
     description: 'Change your house settings.'
   'housetoolbox':
     description: 'Shows a menu to obtain the custom items you can use in your house.'
+  'housemenu':
+    description: 'Shows a menu to open the house toolbox or go to your house.'
