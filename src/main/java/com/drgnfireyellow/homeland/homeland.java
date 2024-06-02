@@ -6,6 +6,7 @@ import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
 import org.bukkit.WorldBorder;
 import org.bukkit.Difficulty;
+import org.bukkit.GameMode;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -71,20 +72,22 @@ public class homeland extends JavaPlugin implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Material heldItemMaterial = player.getInventory().getItemInMainHand().getType();
-        if (player.getWorld().getName().equals("homeland_" + player.getUniqueId().toString())) {
-            if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-                if (heldItemMaterial.equals(Material.NAME_TAG)) {
-                    Location blockLocation = event.getClickedBlock().getRelative(event.getBlockFace()).getLocation();
-                    ArmorStand hologramArmorStand = (ArmorStand) blockLocation.getWorld().spawnEntity(blockLocation, EntityType.ARMOR_STAND);
-                    hologramArmorStand.setGravity(false);
-                    hologramArmorStand.setSmall(true);
-                    hologramArmorStand.setCanPickupItems(false);
-                    hologramArmorStand.customName(player.getInventory().getItemInMainHand().getItemMeta().displayName());
-                    hologramArmorStand.setCustomNameVisible(true);
-                    hologramArmorStand.setVisible(false);
-                }
-                if (event.getClickedBlock().getType().equals(Material.LAVA_CAULDRON)) {
-                    player.getInventory().clear(player.getInventory().getHeldItemSlot());
+        if (player.getGameMode().equals(GameMode.CREATIVE)) {
+            if (player.getWorld().getName().equals("homeland_" + player.getUniqueId().toString())) {
+                if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+                    if (heldItemMaterial.equals(Material.NAME_TAG)) {
+                        Location blockLocation = event.getClickedBlock().getRelative(event.getBlockFace()).getLocation();
+                        ArmorStand hologramArmorStand = (ArmorStand) blockLocation.getWorld().spawnEntity(blockLocation, EntityType.ARMOR_STAND);
+                        hologramArmorStand.setGravity(false);
+                        hologramArmorStand.setSmall(true);
+                        hologramArmorStand.setCanPickupItems(false);
+                        hologramArmorStand.customName(player.getInventory().getItemInMainHand().getItemMeta().displayName());
+                        hologramArmorStand.setCustomNameVisible(true);
+                        hologramArmorStand.setVisible(false);
+                    }
+                    if (event.getClickedBlock().getType().equals(Material.LAVA_CAULDRON)) {
+                        player.getInventory().clear(player.getInventory().getHeldItemSlot());
+                    }
                 }
             }
         }
