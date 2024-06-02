@@ -50,4 +50,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: homeland.jar
-        path: build/libs/Homeland.jar
+        path: build/libs/Homeland-all.jar
