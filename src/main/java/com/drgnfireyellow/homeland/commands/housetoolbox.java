@@ -3,6 +3,7 @@ package main.java.com.drgnfireyellow.homeland.commands;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,7 +18,7 @@ import net.kyori.adventure.text.Component;
 public class housetoolbox implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
+        if (sender instanceof Player && ((Player)sender).getGameMode().equals(GameMode.CREATIVE)) {
             Inventory toolboxInventory = Bukkit.createInventory(null, 27, Component.text("House Toolbox"));
 
             ItemStack slimeBlock = new ItemStack(Material.SLIME_BLOCK, 1);
