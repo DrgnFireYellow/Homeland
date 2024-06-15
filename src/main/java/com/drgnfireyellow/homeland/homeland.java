@@ -43,6 +43,7 @@ public class homeland extends JavaPlugin implements Listener {
         this.getCommand("housetoolbox").setExecutor(new housetoolbox());
         this.getCommand("housemenu").setExecutor(new housemenu());
         Bukkit.getPluginManager().registerEvents(this, this);
+        Bukkit.getLogger().info("Thank you for using Homeland " + this.getPluginMeta().getVersion() + "!");
     }
 
     @EventHandler
