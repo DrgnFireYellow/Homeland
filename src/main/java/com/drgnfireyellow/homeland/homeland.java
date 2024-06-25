@@ -10,6 +10,7 @@ import org.bukkit.GameMode;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -43,8 +44,11 @@ public class homeland extends JavaPlugin implements Listener {
         this.getCommand("housetoolbox").setExecutor(new housetoolbox());
         this.getCommand("housemenu").setExecutor(new housemenu());
         Bukkit.getPluginManager().registerEvents(this, this);
+        saveDefaultConfig();
         Bukkit.getLogger().info("Thank you for using Homeland " + this.getPluginMeta().getVersion() + "!");
     }
+
+    public FileConfiguration config = this.getConfig();
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
@@ -66,7 +70,7 @@ public class homeland extends JavaPlugin implements Listener {
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
         Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
-        if (block.getType().equals(Material.SLIME_BLOCK) && player.getWorld().getName().startsWith("homeland_")) {
+        if (block.getType().equals(Material.SLIME_BLOCK) && (player.getWorld().getName().startsWith("homeland_") || config.get("customFunctionalityInAllWorlds").equals(true))) {
             player.setVelocity(new Vector(0f, 1.2f, 0f));
         }
     }
@@ -76,7 +80,7 @@ public class homeland extends JavaPlugin implements Listener {
         Player player = event.getPlayer();
         Material heldItemMaterial = player.getInventory().getItemInMainHand().getType();
         if (player.getGameMode().equals(GameMode.CREATIVE)) {
-            if (player.getWorld().getName().equals("homeland_" + player.getUniqueId().toString())) {
+            if (player.getWorld().getName().equals("homeland_" + player.getUniqueId().toString()) || config.get("customFunctionalityInAllWorlds").equals(true)) {
                 if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
                     if (heldItemMaterial.equals(Material.NAME_TAG)) {
                         Location blockLocation = event.getClickedBlock().getRelative(event.getBlockFace()).getLocation();
@@ -99,7 +103,7 @@ public class homeland extends JavaPlugin implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        if (player.getWorld().getName().startsWith("homeland_")) {
+        if (player.getWorld().getName().startsWith("homeland_") || config.get("customFunctionalityInAllWorlds").equals(true)) {
             if (player.getInventory().getItemInMainHand().getItemMeta().displayName() != null && player.getInventory().getItemInMainHand().getItemMeta().displayName().equals(Component.text("Hologram Removal Tool"))) {
                 event.setCancelled(true);
                 for (Entity e : player.getNearbyEntities(1, 1, 1)) {
@@ -114,7 +118,7 @@ public class homeland extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerArmorStandManipulate(PlayerArmorStandManipulateEvent event) {
         if (!event.getRightClicked().isVisible()) {
-            if (event.getPlayer().getWorld().getName().startsWith("homeland_")) {
+            if (event.getPlayer().getWorld().getName().startsWith("homeland_") || config.get("customFunctionalityInAllWorlds").equals(true)) {
                 event.setCancelled(true);
             }
         }

@@ -1,0 +1,13 @@
+# Homeland by DrgnFireYellow
+# https://github.com/DrgnFireYellow/Homeland
+
+
+# Whether to enable custom block and item functionality outside of house worlds
+customFunctionalityInAllWorlds: false
+
+
+# Whether to enable concrete stairs and/or slabs
+# WARNING: May cause lag if enabled
+concreteStairsAndSlabs:
+  enableStairs: false
+  enableSlabs: false
