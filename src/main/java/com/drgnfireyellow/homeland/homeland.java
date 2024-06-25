@@ -1,4 +1,4 @@
-package main.java.com.drgnfireyellow.homeland;
+package com.drgnfireyellow.homeland;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -26,12 +26,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.util.Vector;
-import main.java.com.drgnfireyellow.homeland.commands.house;
-import main.java.com.drgnfireyellow.homeland.commands.housemenu;
-import main.java.com.drgnfireyellow.homeland.commands.visit;
+import com.drgnfireyellow.homeland.commands.house;
+import com.drgnfireyellow.homeland.commands.housemenu;
+import com.drgnfireyellow.homeland.commands.visit;
 import net.kyori.adventure.text.Component;
-import main.java.com.drgnfireyellow.homeland.commands.housesetting;
-import main.java.com.drgnfireyellow.homeland.commands.housetoolbox;
+import com.drgnfireyellow.homeland.commands.housesetting;
+import com.drgnfireyellow.homeland.commands.housetoolbox;
 
 public class homeland extends JavaPlugin implements Listener {
     @Override

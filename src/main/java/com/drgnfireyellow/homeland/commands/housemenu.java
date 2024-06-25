@@ -1,4 +1,4 @@
-package main.java.com.drgnfireyellow.homeland.commands;
+package com.drgnfireyellow.homeland.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

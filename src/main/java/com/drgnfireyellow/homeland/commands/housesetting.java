@@ -1,4 +1,4 @@
-package main.java.com.drgnfireyellow.homeland.commands;
+package com.drgnfireyellow.homeland.commands;
 
 import java.util.ArrayList;
 
