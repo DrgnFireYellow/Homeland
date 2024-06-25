@@ -10,7 +10,11 @@ import org.bukkit.GameMode;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.BlockState;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.*;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -20,12 +24,9 @@ import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.util.Transformation;
 import org.bukkit.util.Vector;
 import com.drgnfireyellow.homeland.commands.house;
 import com.drgnfireyellow.homeland.commands.housemenu;
@@ -33,6 +34,8 @@ import com.drgnfireyellow.homeland.commands.visit;
 import net.kyori.adventure.text.Component;
 import com.drgnfireyellow.homeland.commands.housesetting;
 import com.drgnfireyellow.homeland.commands.housetoolbox;
+
+import java.util.Arrays;
 
 public class homeland extends JavaPlugin implements Listener {
     @Override
@@ -103,11 +106,40 @@ public class homeland extends JavaPlugin implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
+        Material[] concretes = {Material.WHITE_CONCRETE, Material.LIGHT_GRAY_CONCRETE, Material.GRAY_CONCRETE, Material.BLACK_CONCRETE, Material.BROWN_CONCRETE, Material.RED_CONCRETE, Material.ORANGE_CONCRETE, Material.YELLOW_CONCRETE, Material.LIME_CONCRETE, Material.GREEN_CONCRETE, Material.CYAN_CONCRETE, Material.LIGHT_BLUE_CONCRETE, Material.BLUE_CONCRETE, Material.PURPLE_CONCRETE, Material.MAGENTA_CONCRETE, Material.PINK_CONCRETE};
+        ItemStack heldItem = player.getInventory().getItemInMainHand();
         if (player.getWorld().getName().startsWith("homeland_") || config.get("customFunctionalityInAllWorlds").equals(true)) {
-            if (player.getInventory().getItemInMainHand().getItemMeta().displayName() != null && player.getInventory().getItemInMainHand().getItemMeta().displayName().equals(Component.text("Hologram Removal Tool"))) {
+            if (player.getInventory().getItemInMainHand().getItemMeta().displayName() != null && heldItem.getItemMeta().displayName().equals(Component.text("Hologram Removal Tool"))) {
                 event.setCancelled(true);
                 for (Entity e : player.getNearbyEntities(1, 1, 1)) {
                     if (e.getType().equals(EntityType.ARMOR_STAND)) {
+                        e.remove();
+                    }
+                }
+            }
+            if (Arrays.asList(concretes).contains(player.getInventory().getItemInMainHand().getType()) && heldItem.getItemMeta().displayName() != null && (heldItem.getItemMeta().displayName().equals(Component.text("Bottom Slab")) || heldItem.getItemMeta().displayName().equals(Component.text("Top Slab"))) && config.get("concreteStairsAndSlabs.enableSlabs").equals(true)) {
+                Location placementLocation = event.getBlock().getLocation();
+                BlockDisplay display = (BlockDisplay) placementLocation.getWorld().spawnEntity(placementLocation, EntityType.BLOCK_DISPLAY);
+                display.setBlock(player.getInventory().getItemInMainHand().getType().createBlockData());
+                Transformation displayTransformation = display.getTransformation();
+                displayTransformation.getScale().set(1, 0.5, 1);
+                if (player.getInventory().getItemInMainHand().getItemMeta().displayName().equals(Component.text("Top Slab"))) {
+                    displayTransformation.getTranslation().set(0, 0.5, 0);
+                }
+                display.setTransformation(displayTransformation);
+                placementLocation.getBlock().setType(Material.BARRIER);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent event) {
+        Player player = event.getPlayer();
+        BlockState blockState = event.getBlock().getState();
+        if (player.getWorld().getName().startsWith("homeland_") || config.get("customFunctionalityInAllWorlds").equals(true))  {
+            if (blockState.getType().equals(Material.BARRIER)) {
+                for (Entity e : player.getWorld().getEntities()) {
+                    if (e.getType().equals(EntityType.BLOCK_DISPLAY) && e.getLocation().equals(event.getBlock().getLocation())) {
                         e.remove();
                     }
                 }
