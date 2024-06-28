@@ -20,11 +20,13 @@ repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.xenondevs.xyz/releases")
+    maven("https://jitpack.io")
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
     implementation("xyz.xenondevs.invui:invui:1.31")
+    implementation("com.github.DrgnFireYellow:Kite:5b15c913b1")
 }
 
 java {

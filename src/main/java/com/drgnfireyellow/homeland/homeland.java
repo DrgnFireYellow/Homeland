@@ -1,5 +1,6 @@
 package com.drgnfireyellow.homeland;
 
+import com.drgnfireyellow.kite.Display;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
@@ -34,6 +35,7 @@ import com.drgnfireyellow.homeland.commands.visit;
 import net.kyori.adventure.text.Component;
 import com.drgnfireyellow.homeland.commands.housesetting;
 import com.drgnfireyellow.homeland.commands.housetoolbox;
+import org.joml.Vector3f;
 
 import java.util.Arrays;
 
@@ -117,16 +119,41 @@ public class homeland extends JavaPlugin implements Listener {
                     }
                 }
             }
-            if (Arrays.asList(concretes).contains(player.getInventory().getItemInMainHand().getType()) && heldItem.getItemMeta().displayName() != null && (heldItem.getItemMeta().displayName().equals(Component.text("Bottom Slab")) || heldItem.getItemMeta().displayName().equals(Component.text("Top Slab"))) && config.get("concreteStairsAndSlabs.enableSlabs").equals(true)) {
+            if (Arrays.asList(concretes).contains(player.getInventory().getItemInMainHand().getType()) && heldItem.getItemMeta().displayName() != null && (heldItem.getItemMeta().displayName().equals(Component.text("Bottom Slab")) || heldItem.getItemMeta().displayName().equals(Component.text("Top Slab")) || heldItem.getItemMeta().displayName().equals(Component.text("Stairs")) || heldItem.getItemMeta().displayName().equals(Component.text("Upside-Down Stairs")))) {
                 Location placementLocation = event.getBlock().getLocation();
-                BlockDisplay display = (BlockDisplay) placementLocation.getWorld().spawnEntity(placementLocation, EntityType.BLOCK_DISPLAY);
-                display.setBlock(player.getInventory().getItemInMainHand().getType().createBlockData());
-                Transformation displayTransformation = display.getTransformation();
-                displayTransformation.getScale().set(1, 0.5, 1);
-                if (player.getInventory().getItemInMainHand().getItemMeta().displayName().equals(Component.text("Top Slab"))) {
-                    displayTransformation.getTranslation().set(0, 0.5, 0);
+                if (config.get("concreteStairsAndSlabs.enableSlabs").equals(true)) {
+                    if (heldItem.getItemMeta().displayName().equals(Component.text("Bottom Slab"))) {
+                        Display.createBlockDisplay(heldItem.getType(), placementLocation, new Vector3f(0, 0, 0), new Vector3f(1F, 0.5F, 1F), new Vector3f(0, 0, 0));
+                    }
+                    if (heldItem.getItemMeta().displayName().equals(Component.text("Top Slab"))) {
+                        Display.createBlockDisplay(heldItem.getType(), placementLocation, new Vector3f(0F, 0.5F, 0F), new Vector3f(1F, 0.5F, 1F), new Vector3f(0, 0, 0));
+                    }
                 }
-                display.setTransformation(displayTransformation);
+                if (config.get("concreteStairsAndSlabs.enableStairs").equals(true)) {
+                    double direction = Math.round((float) ((player.getYaw() + 180) / 90));
+                    Vector3f topScale;
+                    Vector3f topTransform;
+                    if (direction == 4D || direction == 0D) {
+                        topScale = new Vector3f(1F, 0.5F, 0.5F);
+                        topTransform = new Vector3f(0F, 0.5F, 0F);
+                    }
+                    else if (direction == 3D) {
+                        topScale = new Vector3f(0.5F, 0.5F, 1F);
+                        topTransform = new Vector3f(0F, 0.5F, 0F);
+                    }
+                    else if (direction == 2D) {
+                        topScale = new Vector3f(1F, 0.5F, 0.5F);
+                        topTransform = new Vector3f(0F, 0.5F, 0.5F);
+                    }
+                    else {
+                        topScale = new Vector3f(0.5F, 0.5F, 1F);
+                        topTransform = new Vector3f(0.5F, 0.5F, 0F);
+                    }
+                    if (heldItem.getItemMeta().displayName().equals(Component.text("Stairs"))) {
+                        Display.createBlockDisplay(heldItem.getType(), placementLocation, new Vector3f(0, 0, 0), new Vector3f(1F, 0.5F, 1F), new Vector3f(0, 0, 0));
+                        Display.createBlockDisplay(heldItem.getType(), placementLocation, topTransform, topScale, new Vector3f(0, 0, 0));
+                    }
+                }
                 placementLocation.getBlock().setType(Material.BARRIER);
             }
         }
