@@ -156,6 +156,12 @@ public class homeland extends JavaPlugin implements Listener {
                         Display.createBlockDisplay(heldItem.getType(), placementLocation, topTransform, topScale, new Vector3f(0, 0, 0));
                         placementLocation.getBlock().setType(Material.BARRIER);
                     }
+                    if (heldItem.getItemMeta().displayName().equals(Component.text("Upside-Down Stairs"))) {
+                        topTransform.y = 0F;
+                        Display.createBlockDisplay(heldItem.getType(), placementLocation, new Vector3f(0F, 0.5F, 0F), new Vector3f(1F, 0.5F, 1F), new Vector3f(0, 0, 0));
+                        Display.createBlockDisplay(heldItem.getType(), placementLocation, topTransform, topScale, new Vector3f(0, 0, 0));
+                        placementLocation.getBlock().setType(Material.BARRIER);
+                    }
                 }
             }
         }
