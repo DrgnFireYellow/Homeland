@@ -124,9 +124,11 @@ public class homeland extends JavaPlugin implements Listener {
                 if (config.get("concreteStairsAndSlabs.enableSlabs").equals(true)) {
                     if (heldItem.getItemMeta().displayName().equals(Component.text("Bottom Slab"))) {
                         Display.createBlockDisplay(heldItem.getType(), placementLocation, new Vector3f(0, 0, 0), new Vector3f(1F, 0.5F, 1F), new Vector3f(0, 0, 0));
+                        placementLocation.getBlock().setType(Material.BARRIER);
                     }
                     if (heldItem.getItemMeta().displayName().equals(Component.text("Top Slab"))) {
                         Display.createBlockDisplay(heldItem.getType(), placementLocation, new Vector3f(0F, 0.5F, 0F), new Vector3f(1F, 0.5F, 1F), new Vector3f(0, 0, 0));
+                        placementLocation.getBlock().setType(Material.BARRIER);
                     }
                 }
                 if (config.get("concreteStairsAndSlabs.enableStairs").equals(true)) {
@@ -152,9 +154,9 @@ public class homeland extends JavaPlugin implements Listener {
                     if (heldItem.getItemMeta().displayName().equals(Component.text("Stairs"))) {
                         Display.createBlockDisplay(heldItem.getType(), placementLocation, new Vector3f(0, 0, 0), new Vector3f(1F, 0.5F, 1F), new Vector3f(0, 0, 0));
                         Display.createBlockDisplay(heldItem.getType(), placementLocation, topTransform, topScale, new Vector3f(0, 0, 0));
+                        placementLocation.getBlock().setType(Material.BARRIER);
                     }
                 }
-                placementLocation.getBlock().setType(Material.BARRIER);
             }
         }
     }
