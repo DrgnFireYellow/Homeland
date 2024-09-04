@@ -18,39 +18,43 @@ import net.kyori.adventure.text.Component;
 public class housetoolbox implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player && ((Player)sender).getGameMode().equals(GameMode.CREATIVE)) {
-            Inventory toolboxInventory = Bukkit.createInventory(null, 27, Component.text("House Toolbox"));
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            if ((((Player) sender).getGameMode().equals(GameMode.CREATIVE)) || (player.getWorld().getName().equals("homeland_" + player.getUniqueId()))) {
 
-            ItemStack slimeBlock = new ItemStack(Material.SLIME_BLOCK, 1);
-            ItemMeta slimeBlockMeta = slimeBlock.getItemMeta();
-            ArrayList<Component> slimeBlockLore = new ArrayList<Component>();
-            slimeBlockLore.add(Component.text("Makes you bounce really high."));
-            slimeBlockLore.add(Component.text("(Applies to all Slime Blocks)"));
-            slimeBlockMeta.displayName(Component.text("Bounce Pad"));
-            slimeBlockMeta.lore(slimeBlockLore);
-            slimeBlock.setItemMeta(slimeBlockMeta);
-            toolboxInventory.addItem(slimeBlock);
+                Inventory toolboxInventory = Bukkit.createInventory(null, 27, Component.text("House Toolbox"));
 
-            ItemStack nameTag = new ItemStack(Material.NAME_TAG, 1);
-            ItemMeta nameTagMeta = nameTag.getItemMeta();
-            ArrayList<Component> nameTagLore = new ArrayList<Component>();
-            nameTagLore.add(Component.text("Floating text. Rename in an anvil to use."));
-            nameTagLore.add(Component.text("(Applies to all Name Tags)"));
-            nameTagMeta.displayName(Component.text("Hologram"));
-            nameTagMeta.lore(nameTagLore);
-            nameTag.setItemMeta(nameTagMeta);
-            toolboxInventory.addItem(nameTag);
+                ItemStack slimeBlock = new ItemStack(Material.SLIME_BLOCK, 1);
+                ItemMeta slimeBlockMeta = slimeBlock.getItemMeta();
+                ArrayList<Component> slimeBlockLore = new ArrayList<Component>();
+                slimeBlockLore.add(Component.text("Makes you bounce really high."));
+                slimeBlockLore.add(Component.text("(Applies to all Slime Blocks)"));
+                slimeBlockMeta.displayName(Component.text("Bounce Pad"));
+                slimeBlockMeta.lore(slimeBlockLore);
+                slimeBlock.setItemMeta(slimeBlockMeta);
+                toolboxInventory.addItem(slimeBlock);
 
-            ItemStack hologramRemovalTool = new ItemStack(Material.BARRIER, 1);
-            ItemMeta hologramRemovalToolMeta = hologramRemovalTool.getItemMeta();
-            ArrayList<Component> hologramRemovalToolLore = new ArrayList<Component>();
-            hologramRemovalToolLore.add(Component.text("When placed, removes all nearby holograms."));
-            hologramRemovalToolMeta.lore(hologramRemovalToolLore);
-            hologramRemovalToolMeta.displayName(Component.text("Hologram Removal Tool"));
-            hologramRemovalTool.setItemMeta(hologramRemovalToolMeta);
-            toolboxInventory.addItem(hologramRemovalTool);
+                ItemStack nameTag = new ItemStack(Material.NAME_TAG, 1);
+                ItemMeta nameTagMeta = nameTag.getItemMeta();
+                ArrayList<Component> nameTagLore = new ArrayList<Component>();
+                nameTagLore.add(Component.text("Floating text. Rename in an anvil to use."));
+                nameTagLore.add(Component.text("(Applies to all Name Tags)"));
+                nameTagMeta.displayName(Component.text("Hologram"));
+                nameTagMeta.lore(nameTagLore);
+                nameTag.setItemMeta(nameTagMeta);
+                toolboxInventory.addItem(nameTag);
 
-            ((Player) sender).openInventory(toolboxInventory);
+                ItemStack hologramRemovalTool = new ItemStack(Material.BARRIER, 1);
+                ItemMeta hologramRemovalToolMeta = hologramRemovalTool.getItemMeta();
+                ArrayList<Component> hologramRemovalToolLore = new ArrayList<Component>();
+                hologramRemovalToolLore.add(Component.text("When placed, removes all nearby holograms."));
+                hologramRemovalToolMeta.lore(hologramRemovalToolLore);
+                hologramRemovalToolMeta.displayName(Component.text("Hologram Removal Tool"));
+                hologramRemovalTool.setItemMeta(hologramRemovalToolMeta);
+                toolboxInventory.addItem(hologramRemovalTool);
+
+                player.openInventory(toolboxInventory);
+            }
         }
         return false;
     }
