@@ -12,6 +12,7 @@ tasks {
         minecraftVersion("1.20.4")
         downloadPlugins {
             modrinth("multiverse-core", "4.3.12")
+            modrinth("worldedit", "JzCMkGax")
         }
     }
 }
@@ -20,6 +21,7 @@ repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.xenondevs.xyz/releases")
+    maven("https://maven.enginehub.org/repo/")
     maven("https://jitpack.io")
 }
 
@@ -27,6 +29,7 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
     implementation("xyz.xenondevs.invui:invui:1.31")
     implementation("com.github.DrgnFireYellow:Kite:5b15c913b1")
+    compileOnly("com.sk89q.worldedit:worldedit-bukkit:7.3.0")
 }
 
 java {

@@ -27,7 +27,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.util.Transformation;
 import org.bukkit.util.Vector;
 import com.drgnfireyellow.homeland.commands.house;
 import com.drgnfireyellow.homeland.commands.housemenu;
@@ -44,13 +43,15 @@ public class homeland extends JavaPlugin implements Listener {
     public void onEnable() {
         this.getCommand("house").setExecutor(new house());
         this.getCommand("visit").setExecutor(new visit());
-        this.getCommand("housesetting").setExecutor(new housesetting());
         this.getCommand("housesetting").setTabCompleter(new housesetting());
         this.getCommand("housetoolbox").setExecutor(new housetoolbox());
         this.getCommand("housemenu").setExecutor(new housemenu());
         Bukkit.getPluginManager().registerEvents(this, this);
         saveDefaultConfig();
         Bukkit.getLogger().info("Thank you for using Homeland " + this.getPluginMeta().getVersion() + "!");
+        if (getServer().getPluginManager().isPluginEnabled("Worldedit")) {
+            Bukkit.getLogger().info("[Homeland] WorldEdit found. Integration will be available.");
+        }
     }
 
     public FileConfiguration config = this.getConfig();
@@ -68,6 +69,9 @@ public class homeland extends JavaPlugin implements Listener {
             WorldBorder userWorldBorder = userWorld.getWorldBorder();
             userWorldBorder.setSize(100);
             userWorld.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
+            if ((boolean) config.get("customSchematic.enabled")) {
+                Bukkit.getLogger().info("Custom Schematics enabled!");
+            }
         }
     }
 

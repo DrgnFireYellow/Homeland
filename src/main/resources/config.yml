@@ -1,6 +1,9 @@
 # Homeland by DrgnFireYellow
 # https://github.com/DrgnFireYellow/Homeland
 
+customSchematic:
+  enabled: false
+  schematicName: "house_base"
 
 # Whether to enable custom block and item functionality outside of house worlds
 customFunctionalityInAllWorlds: false
