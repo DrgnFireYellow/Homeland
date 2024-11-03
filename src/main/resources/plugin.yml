@@ -16,3 +16,28 @@ commands:
     description: 'Shows a menu to obtain the custom items you can use in your house.'
   'housemenu':
     description: 'Shows a menu to open the house toolbox or go to your house.'
+
+permissions:
+  homeland.*:
+    description: "Grants access to all Homeland commands."
+    children:
+      - homeland.house
+      - homeland.visit
+      - homeland.housesetting
+      - homeland.housetoolbox
+      - homeland.housemenu
+  homeland.house:
+    description: "Grants permission to use the /house command to teleport to the user's house world."
+    default: true
+  homeland.visit:
+    description: "Grants permission to use the /visit command to teleport to other players' house worlds."
+    default: true
+  homeland.housesetting:
+    description: "Grants permission to use the /housesetting command to change settings for the user's house."
+    default: true
+  homeland.housetoolbox:
+    description: "Grants permission to use the /housetoolbox command to get items added by Homeland."
+    default: true
+  homeland.housemenu:
+    description: "Grants permission to use the /housemenu command to open the UI for various Homeland functions."
+    default: true

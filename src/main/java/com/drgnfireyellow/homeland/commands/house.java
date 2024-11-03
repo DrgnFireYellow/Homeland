@@ -12,7 +12,7 @@ import org.bukkit.GameMode;
 public class house implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
+        if (sender instanceof Player && sender.hasPermission("homeland.house")) {
             sender.sendMessage("Teleporting to your house...");
             World destinationWorld = Bukkit.getWorld("homeland_" + ((Player) sender).getUniqueId().toString());
             Location destination = new Location(destinationWorld, 0, -60, 0);

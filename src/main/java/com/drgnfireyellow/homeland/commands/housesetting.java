@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 public class housesetting implements CommandExecutor,TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
+        if (sender instanceof Player && sender.hasPermission("homeland.housesetting")) {
             World userWorld = Bukkit.getWorld("homeland_" + ((Player) sender).getUniqueId().toString());
             if (args.length > 1) {
                 if (args[0].equals("time")) {

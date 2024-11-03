@@ -12,6 +12,7 @@ tasks {
         minecraftVersion("1.20.4")
         downloadPlugins {
             modrinth("multiverse-core", "4.3.12")
+            modrinth("luckperms", "v5.4.145-bukkit")
         }
     }
 }

@@ -13,7 +13,7 @@ import org.bukkit.GameMode;
 public class visit implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
+        if (sender instanceof Player && sender.hasPermission("homeland.visit")) {
             if (Bukkit.getOfflinePlayerIfCached(args[0]) != null) {
                 sender.sendMessage("Teleporting to "  + args[0] + "'s house...");
                 World destinationWorld = Bukkit.getWorld("homeland_" + Bukkit.getOfflinePlayerIfCached(args[0]).getUniqueId().toString());

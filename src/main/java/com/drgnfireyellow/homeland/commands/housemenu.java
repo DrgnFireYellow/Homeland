@@ -59,7 +59,7 @@ final class VisitItem extends AbstractItem {
 public class housemenu implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
+        if (sender instanceof Player && sender.hasPermission("homeland.housemenu")) {
             ItemStack houseItem = new ItemStack(Material.RED_BED);
             ItemMeta houseMeta = houseItem.getItemMeta();
             houseMeta.displayName(Component.text("Your House").decoration(TextDecoration.ITALIC, false));
