@@ -63,12 +63,12 @@ public class homeland extends JavaPlugin implements Listener {
             creator.environment(World.Environment.NORMAL);
             creator.type(WorldType.FLAT);
             creator.createWorld();
-            World userWorld = Bukkit.getWorld("homeland_" + event.getPlayer().getUniqueId().toString());
-            userWorld.setDifficulty(Difficulty.PEACEFUL);
-            WorldBorder userWorldBorder = userWorld.getWorldBorder();
-            userWorldBorder.setSize(100);
-            userWorld.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
         }
+        World userWorld = Bukkit.getWorld("homeland_" + event.getPlayer().getUniqueId().toString());
+        userWorld.setDifficulty(Difficulty.PEACEFUL);
+        WorldBorder userWorldBorder = userWorld.getWorldBorder();
+        userWorldBorder.setSize(config.getDouble("houseSize"));
+        userWorld.setGameRule(GameRule.DO_DAYLIGHT_CYCLE, false);
     }
 
     @EventHandler

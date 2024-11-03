@@ -1,6 +1,8 @@
 # Homeland by DrgnFireYellow
 # https://github.com/DrgnFireYellow/Homeland
 
+# The size of the world border in house worlds
+houseSize: 100
 
 # Whether to enable custom block and item functionality outside of house worlds
 customFunctionalityInAllWorlds: false
