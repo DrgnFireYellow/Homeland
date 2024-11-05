@@ -4,6 +4,9 @@
 # The size of the world border in house worlds
 houseSize: 100
 
+# Whether to clear players' inventories when visiting someone else's house
+clearInventoryOnVisit: true
+
 # Whether to enable custom block and item functionality outside of house worlds
 customFunctionalityInAllWorlds: false
 

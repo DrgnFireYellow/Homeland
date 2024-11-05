@@ -26,7 +26,7 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
-    implementation("xyz.xenondevs.invui:invui:1.31")
+    implementation("xyz.xenondevs.invui:invui:1.40")
     implementation("com.github.DrgnFireYellow:Kite:5b15c913b1")
 }
 

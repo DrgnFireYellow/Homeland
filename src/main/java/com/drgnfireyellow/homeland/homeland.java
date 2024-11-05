@@ -27,7 +27,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.util.Transformation;
 import org.bukkit.util.Vector;
 import com.drgnfireyellow.homeland.commands.house;
 import com.drgnfireyellow.homeland.commands.housemenu;
@@ -53,7 +52,7 @@ public class homeland extends JavaPlugin implements Listener {
         Bukkit.getLogger().info("Thank you for using Homeland " + this.getPluginMeta().getVersion() + "!");
     }
 
-    public FileConfiguration config = this.getConfig();
+    public final FileConfiguration config = this.getConfig();
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
