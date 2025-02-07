@@ -61,25 +61,4 @@ public class HouseSetting {
             }
         }
     }
-    public ArrayList<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        ArrayList<String> output = new ArrayList<String>();
-        if (args.length == 1) {
-            output.add("time");
-            output.add("mobspawning");
-        }
-        if (args.length == 2) {
-            if (args[0].equals("time")) {
-                output.add("sunrise");
-                output.add("day");
-                output.add("noon");
-                output.add("night");
-                output.add("midnight");
-            }
-            else if (args[0].equals("mobspawning")) {
-                output.add("true");
-                output.add("false");
-            }
-        }
-        return output;
-    }
 }

@@ -20,6 +20,28 @@ public class HouseTabComplete implements TabCompleter {
             output.add("setting");
         }
 
+        if (args.length > 1) {
+            if (args[0].equals("setting")) {
+                if (args.length == 2) {
+                    output.add("time");
+                    output.add("mobspawning");
+                }
+                if (args.length == 3) {
+                    if (args[1].equals("time")) {
+                        output.add("sunrise");
+                        output.add("day");
+                        output.add("noon");
+                        output.add("night");
+                        output.add("midnight");
+                    }
+                    else if (args[1].equals("mobspawning")) {
+                        output.add("true");
+                        output.add("false");
+                    }
+                }
+            }
+        }
+
         return output;
     }
 }
