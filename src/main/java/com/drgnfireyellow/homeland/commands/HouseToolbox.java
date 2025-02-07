@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -15,7 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import net.kyori.adventure.text.Component;
 
-public class housetoolbox {
+public class HouseToolbox {
     public static void command(CommandSender sender, String[] args) {
         if (sender instanceof Player && sender.hasPermission("homeland.housetoolbox")) {
             Player player = (Player) sender;

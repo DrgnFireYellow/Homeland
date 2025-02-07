@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 
-public class house implements CommandExecutor {
+public class House implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player && sender.hasPermission("homeland.house") && args.length == 0) {
@@ -20,15 +20,15 @@ public class house implements CommandExecutor {
         }
 
         if (args.length > 0 && args[0].equals("setting")) {
-            housesetting.command(sender, Arrays.copyOfRange(args, 1, args.length));
+            HouseSetting.command(sender, Arrays.copyOfRange(args, 1, args.length));
         }
 
         if (args.length > 0 && args[0].equals("toolbox")) {
-            housetoolbox.command(sender, Arrays.copyOfRange(args, 1, args.length));
+            HouseToolbox.command(sender, Arrays.copyOfRange(args, 1, args.length));
         }
 
         if (args.length > 0 && args[0].equals("menu")) {
-            housemenu.command(sender, Arrays.copyOfRange(args, 1, args.length));
+            HouseMenu.command(sender, Arrays.copyOfRange(args, 1, args.length));
         }
 
         return false;

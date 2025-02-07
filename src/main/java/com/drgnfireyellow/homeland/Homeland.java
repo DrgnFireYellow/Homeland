@@ -29,19 +29,19 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.util.Vector;
-import com.drgnfireyellow.homeland.commands.house;
-import com.drgnfireyellow.homeland.commands.visit;
+import com.drgnfireyellow.homeland.commands.House;
+import com.drgnfireyellow.homeland.commands.Visit;
 import net.kyori.adventure.text.Component;
 import org.joml.Vector3f;
 
 import java.util.Arrays;
 
-public class homeland extends JavaPlugin implements Listener {
+public class Homeland extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
-        this.getCommand("house").setExecutor(new house());
+        this.getCommand("house").setExecutor(new House());
         this.getCommand("house").setTabCompleter(new HouseTabComplete());
-        this.getCommand("visit").setExecutor(new visit());
+        this.getCommand("visit").setExecutor(new Visit());
         Bukkit.getPluginManager().registerEvents(this, this);
         saveDefaultConfig();
         Bukkit.getLogger().info("Thank you for using Homeland " + this.getPluginMeta().getVersion() + "!");

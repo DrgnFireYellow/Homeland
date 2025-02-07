@@ -1,6 +1,6 @@
 name: Homeland
 version: 1.2.1
-main: com.drgnfireyellow.homeland.homeland
+main: com.drgnfireyellow.homeland.Homeland
 description: An attempt at recreating Hypixel housing.
 author: DrgnFireYellow
 website: https://github.com/DrgnFireYellow

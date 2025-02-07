@@ -3,8 +3,6 @@ package com.drgnfireyellow.homeland.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -19,10 +17,8 @@ import net.kyori.adventure.text.format.TextDecoration;
 import xyz.xenondevs.invui.gui.Gui;
 import xyz.xenondevs.invui.item.ItemProvider;
 import xyz.xenondevs.invui.item.ItemWrapper;
-import xyz.xenondevs.invui.item.builder.ItemBuilder;
 import xyz.xenondevs.invui.item.impl.AbstractItem;
 import xyz.xenondevs.invui.item.impl.CommandItem;
-import xyz.xenondevs.invui.item.impl.controlitem.ControlItem;
 import xyz.xenondevs.invui.window.Window;
 
 final class VisitItem extends AbstractItem {
@@ -56,7 +52,7 @@ final class VisitItem extends AbstractItem {
 
 }
 
-public class housemenu {
+public class HouseMenu {
     public static void command(CommandSender sender, String[] args) {
         if (sender instanceof Player && sender.hasPermission("homeland.housemenu")) {
             ItemStack houseItem = new ItemStack(Material.RED_BED);

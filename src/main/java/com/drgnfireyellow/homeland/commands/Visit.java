@@ -9,11 +9,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.World;
 import org.bukkit.Location;
 import org.bukkit.GameMode;
-import com.drgnfireyellow.homeland.homeland;
+import com.drgnfireyellow.homeland.Homeland;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class visit implements CommandExecutor {
-    FileConfiguration config = JavaPlugin.getPlugin(homeland.class).getConfig();
+public class Visit implements CommandExecutor {
+    FileConfiguration config = JavaPlugin.getPlugin(Homeland.class).getConfig();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

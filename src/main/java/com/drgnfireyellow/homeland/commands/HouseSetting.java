@@ -5,13 +5,11 @@ import java.util.ArrayList;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-public class housesetting {
+public class HouseSetting {
     public static void command(CommandSender sender, String[] args) {
         if (sender instanceof Player && sender.hasPermission("homeland.housesetting")) {
             World userWorld = Bukkit.getWorld("homeland_" + ((Player) sender).getUniqueId().toString());
