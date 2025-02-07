@@ -33,11 +33,11 @@ permissions:
     description: "Grants permission to use the /visit command to teleport to other players' house worlds."
     default: true
   homeland.house.setting:
-    description: "Grants permission to use the /housesetting command to change settings for the user's house."
+    description: "Grants permission to use the /house setting subcommand to change settings for the user's house."
     default: true
   homeland.house.toolbox:
-    description: "Grants permission to use the /housetoolbox command to get items added by Homeland."
+    description: "Grants permission to use the /house toolbox subcommand to get items added by Homeland."
     default: true
   homeland.house.menu:
-    description: "Grants permission to use the /housemenu command to open the UI for various Homeland functions."
+    description: "Grants permission to use the /house menu subcommand to open the UI for various Homeland functions."
     default: true
