@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 public class HouseSetting {
     public static void command(CommandSender sender, String[] args) {
-        if (sender instanceof Player && sender.hasPermission("homeland.housesetting")) {
+        if (sender instanceof Player && sender.hasPermission("homeland.house.setting")) {
             World userWorld = Bukkit.getWorld("homeland_" + ((Player) sender).getUniqueId().toString());
             if (args.length > 1) {
                 if (args[0].equals("time")) {

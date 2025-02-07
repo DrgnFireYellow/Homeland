@@ -17,21 +17,27 @@ permissions:
     children:
       - homeland.house
       - homeland.visit
-      - homeland.housesetting
-      - homeland.housetoolbox
-      - homeland.housemenu
+      - homeland.house.setting
+      - homeland.house.toolbox
+      - homeland.house.menu
   homeland.house:
     description: "Grants permission to use the /house command to teleport to the user's house world."
     default: true
+  homeland.house.*:
+    description: "Grants permission to use all subcommands of the /house command."
+    children:
+      - homeland.house.setting
+      - homeland.house.toolbox
+      - homeland.house.menu
   homeland.visit:
     description: "Grants permission to use the /visit command to teleport to other players' house worlds."
     default: true
-  homeland.housesetting:
+  homeland.house.setting:
     description: "Grants permission to use the /housesetting command to change settings for the user's house."
     default: true
-  homeland.housetoolbox:
+  homeland.house.toolbox:
     description: "Grants permission to use the /housetoolbox command to get items added by Homeland."
     default: true
-  homeland.housemenu:
+  homeland.house.menu:
     description: "Grants permission to use the /housemenu command to open the UI for various Homeland functions."
     default: true

@@ -15,7 +15,7 @@ import net.kyori.adventure.text.Component;
 
 public class HouseToolbox {
     public static void command(CommandSender sender, String[] args) {
-        if (sender instanceof Player && sender.hasPermission("homeland.housetoolbox")) {
+        if (sender instanceof Player && sender.hasPermission("homeland.house.toolbox")) {
             Player player = (Player) sender;
             if ((((Player) sender).getGameMode().equals(GameMode.CREATIVE)) || (player.getWorld().getName().equals("homeland_" + player.getUniqueId()))) {
 

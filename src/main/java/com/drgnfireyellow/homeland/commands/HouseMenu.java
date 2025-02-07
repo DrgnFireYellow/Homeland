@@ -54,7 +54,7 @@ final class VisitItem extends AbstractItem {
 
 public class HouseMenu {
     public static void command(CommandSender sender, String[] args) {
-        if (sender instanceof Player && sender.hasPermission("homeland.housemenu")) {
+        if (sender instanceof Player && sender.hasPermission("homeland.house.menu")) {
             ItemStack houseItem = new ItemStack(Material.RED_BED);
             ItemMeta houseMeta = houseItem.getItemMeta();
             houseMeta.displayName(Component.text("Your House").decoration(TextDecoration.ITALIC, false));
