@@ -11,9 +11,8 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-public class housesetting implements CommandExecutor,TabCompleter {
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class housesetting {
+    public static void command(CommandSender sender, String[] args) {
         if (sender instanceof Player && sender.hasPermission("homeland.housesetting")) {
             World userWorld = Bukkit.getWorld("homeland_" + ((Player) sender).getUniqueId().toString());
             if (args.length > 1) {
@@ -63,9 +62,7 @@ public class housesetting implements CommandExecutor,TabCompleter {
                 sender.sendMessage("mobspawning");
             }
         }
-        return false;
     }
-    @Override
     public ArrayList<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         ArrayList<String> output = new ArrayList<String>();
         if (args.length == 1) {

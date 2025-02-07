@@ -56,9 +56,8 @@ final class VisitItem extends AbstractItem {
 
 }
 
-public class housemenu implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class housemenu {
+    public static void command(CommandSender sender, String[] args) {
         if (sender instanceof Player && sender.hasPermission("homeland.housemenu")) {
             ItemStack houseItem = new ItemStack(Material.RED_BED);
             ItemMeta houseMeta = houseItem.getItemMeta();
@@ -76,12 +75,11 @@ public class housemenu implements CommandExecutor {
             ". . . . . . . . .",
             ". . . . . . . . .")
             .addIngredient('H', new CommandItem(new ItemWrapper(houseItem), "/homeland:house"))
-            .addIngredient('T', new CommandItem(new ItemWrapper(toolboxItem), "/homeland:housetoolbox"))
+            .addIngredient('T', new CommandItem(new ItemWrapper(toolboxItem), "/homeland:house toolbox"))
             .addIngredient('V', new VisitItem())
             .build();
             Window displayWindow = Window.single().setViewer(((Player) sender)).setTitle("House Menu").setGui(menu).build();
             displayWindow.open();
         }
-        return false;
     }
 }

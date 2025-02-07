@@ -15,9 +15,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import net.kyori.adventure.text.Component;
 
-public class housetoolbox implements CommandExecutor {
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+public class housetoolbox {
+    public static void command(CommandSender sender, String[] args) {
         if (sender instanceof Player && sender.hasPermission("homeland.housetoolbox")) {
             Player player = (Player) sender;
             if ((((Player) sender).getGameMode().equals(GameMode.CREATIVE)) || (player.getWorld().getName().equals("homeland_" + player.getUniqueId()))) {
@@ -56,6 +55,5 @@ public class housetoolbox implements CommandExecutor {
                 player.openInventory(toolboxInventory);
             }
         }
-        return false;
     }
 }

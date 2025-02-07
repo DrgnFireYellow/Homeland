@@ -1,5 +1,6 @@
 package com.drgnfireyellow.homeland;
 
+import com.drgnfireyellow.homeland.commands.HouseTabComplete;
 import com.drgnfireyellow.kite.Display;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -29,11 +30,8 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.util.Vector;
 import com.drgnfireyellow.homeland.commands.house;
-import com.drgnfireyellow.homeland.commands.housemenu;
 import com.drgnfireyellow.homeland.commands.visit;
 import net.kyori.adventure.text.Component;
-import com.drgnfireyellow.homeland.commands.housesetting;
-import com.drgnfireyellow.homeland.commands.housetoolbox;
 import org.joml.Vector3f;
 
 import java.util.Arrays;
@@ -42,11 +40,8 @@ public class homeland extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         this.getCommand("house").setExecutor(new house());
+        this.getCommand("house").setTabCompleter(new HouseTabComplete());
         this.getCommand("visit").setExecutor(new visit());
-        this.getCommand("housesetting").setExecutor(new housesetting());
-        this.getCommand("housesetting").setTabCompleter(new housesetting());
-        this.getCommand("housetoolbox").setExecutor(new housetoolbox());
-        this.getCommand("housemenu").setExecutor(new housemenu());
         Bukkit.getPluginManager().registerEvents(this, this);
         saveDefaultConfig();
         Bukkit.getLogger().info("Thank you for using Homeland " + this.getPluginMeta().getVersion() + "!");
