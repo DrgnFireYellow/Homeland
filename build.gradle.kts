@@ -1,17 +1,14 @@
 plugins {
     java
-    id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("xyz.jpenilla.run-paper") version "2.2.0"
+    id("com.gradleup.shadow") version "9.0.0-beta10"
+    id("xyz.jpenilla.run-paper") version "2.3.1"
 }
 
 tasks {
     runServer {
-        // Configure the Minecraft version for our task.
-        // This is the only required configuration besides applying the plugin.
-        // Your plugin's jar (or shadowJar if present) will be used automatically.
         minecraftVersion("1.20.4")
         downloadPlugins {
-            modrinth("multiverse-core", "4.3.12")
+            modrinth("multiverse-core", "4.3.14")
             modrinth("luckperms", "v5.4.145-bukkit")
         }
     }
@@ -26,7 +23,7 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
-    implementation("xyz.xenondevs.invui:invui:1.40")
+    implementation("xyz.xenondevs.invui:invui:1.44")
     implementation("com.github.DrgnFireYellow:Kite:5b15c913b1")
 }
 

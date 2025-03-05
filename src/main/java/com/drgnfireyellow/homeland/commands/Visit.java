@@ -22,7 +22,7 @@ public class Visit implements CommandExecutor {
                 sender.sendMessage("Teleporting to "  + args[0] + "'s house...");
                 World destinationWorld = Bukkit.getWorld("homeland_" + Bukkit.getOfflinePlayerIfCached(args[0]).getUniqueId().toString());
                 Location destination = new Location(destinationWorld, 0, -60, 0);
-                ((Player) sender).teleport(destination);
+                ((Player) sender).teleportAsync(destination);
                 ((Player) sender).setGameMode(GameMode.ADVENTURE);
                 if (config.getBoolean("clearInventoryOnVisit")) {
                     ((Player) sender).getInventory().clear();

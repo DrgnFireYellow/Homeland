@@ -15,7 +15,7 @@ public class House implements CommandExecutor {
             sender.sendMessage("Teleporting to your house...");
             World destinationWorld = Bukkit.getWorld("homeland_" + ((Player) sender).getUniqueId());
             Location destination = new Location(destinationWorld, 0, -60, 0);
-            ((Player) sender).teleport(destination);
+            ((Player) sender).teleportAsync(destination);
             ((Player) sender).setGameMode(GameMode.CREATIVE);
         }
 
